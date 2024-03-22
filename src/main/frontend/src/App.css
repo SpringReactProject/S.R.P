@@ -1,0 +1,31 @@
+.navbar {
+  position: fixed !important;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 30px !important;
+  background: transparent !important;
+  transition: all ease 0.5s !important;
+}
+.navbar-toggler-icon {
+  background-image: url(https://stageaile.com/css/hamburgermenu.svg) !important;
+}
+.navbar-toggler:focus {
+  box-shadow: unset !important;
+}
+.navbar a:hover {
+  color: #e1e1e1;
+}
+.navbar.black {
+  background-color: #141414 !important;
+}
+.nav-itme {
+  color: #fff;
+  text-decoration: none;
+  margin: 20px;
+  cursor: pointer;
+}
+.nav-itme:hover {
+  color: #bbbbbb;
+}
