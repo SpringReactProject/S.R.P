@@ -21,7 +21,7 @@ const Navigation = () => {
       <Navbar>
         <Container>
           <Link to="/">로고</Link>
-          <br />
+
           <Link to="/login">로그인</Link>
         </Container>
       </Navbar>
