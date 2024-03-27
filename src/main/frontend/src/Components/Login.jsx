@@ -1,18 +1,32 @@
 import React, { useState } from "react";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSetRecoilState, useRecoilValue } from "recoil";
+import { TokenAtom, isLoginSelector } from "../Recoil/TokenAtom";
+
 const Login = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const setAccessToken = useSetRecoilState(TokenAtom);
+  const isLogin = useRecoilValue(isLoginSelector);
   const loginUser = (event) => {
     event.preventDefault();
     console.log();
-    //dispatch(authenticateAction.login(id, password));
     navigate("/");
   };
   const Login = () => {
     navigate("/join");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post("/api/test", { id: id, password: password }).then((res) => {
+      console.log(res.data);
+      setAccessToken(res.data.accessToken);
+    });
   };
   return (
     <Container
@@ -33,6 +47,7 @@ const Login = () => {
             placeholder="Enter email"
             onChange={(e) => {
               setId(e.target.value);
+              console.log(id);
             }}
           />
           <Form.Text className="text-muted">
@@ -49,7 +64,7 @@ const Login = () => {
           />
         </Form.Group>
 
-        <Button variant="danger" type="submit">
+        <Button variant="danger" type="submit" onClick={handleSubmit}>
           로그인
         </Button>
         <Button
